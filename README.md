@@ -1,0 +1,2 @@
+# gostack
+Simple stack module

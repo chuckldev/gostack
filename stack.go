@@ -32,6 +32,17 @@ func (s *Stack) IsEmpty() bool {
 	}
 }
 
+func (s *Stack) Reverse() {
+	temp := New()
+	for !s.IsEmpty() {
+		temp.Push(s.Pop())
+	}
+
+	for !temp.IsEmpty() {
+		s.Push(temp.Pop())
+	}
+}
+
 func (s *Stack) Peek() interface{} {
 	res := s.Data[len(s.Data)-1 : len(s.Data)]
 	return res[0]

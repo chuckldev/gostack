@@ -32,12 +32,15 @@ func (s *Stack) IsEmpty() bool {
 	}
 }
 
-func (s *Stack) Reverse() Stack {
+func (s *Stack) Reverse() {
 	temp := New()
 	for !s.IsEmpty() {
 		temp.Push(s.Pop())
 	}
-	return *temp
+
+	for !temp.IsEmpty() {
+		s.Push(temp.Pop())
+	}
 }
 
 func (s *Stack) Peek() interface{} {

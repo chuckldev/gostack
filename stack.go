@@ -38,11 +38,13 @@ func (s *Stack) Reverse() Stack {
 		temp.Push(s.Pop())
 	}
 
+	res := temp
+
 	for !temp.IsEmpty() {
 		s.Push(temp.Pop())
 	}
 
-	return *temp
+	return *res
 }
 
 func (s *Stack) Peek() interface{} {

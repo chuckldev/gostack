@@ -33,15 +33,15 @@ func (s *Stack) IsEmpty() bool {
 }
 
 func (s *Stack) Reverse() Stack {
-	temp := New()
+	copy := New()
+	res := New()
 	for !s.IsEmpty() {
-		temp.Push(s.Pop())
+		copy.Push(s.Peek())
+		res.Push(s.Pop())
 	}
 
-	res := temp
-
-	for !temp.IsEmpty() {
-		s.Push(temp.Pop())
+	for !copy.IsEmpty() {
+		s.Push(copy.Pop())
 	}
 
 	return *res

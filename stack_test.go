@@ -3,6 +3,7 @@
 package stack
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -108,7 +109,7 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestPek(t *testing.T) {
+func TestPeek(t *testing.T) {
 	stk := New()
 	wantName := "number"
 	wantVal := 1
@@ -145,4 +146,34 @@ func TestPek(t *testing.T) {
 		t.Errorf("Stack Peek() should be five ( 5 )")
 	}
 
+}
+
+func TestReverse(t *testing.T) {
+	want := "4321"
+	stk := New()
+
+	stk.Push("1")
+	stk.Push("2")
+	stk.Push("3")
+	stk.Push("4")
+
+	res := stk.Reverse()
+	var s string
+	for !stk.IsEmpty() {
+		s += fmt.Sprint(stk.Pop().(string))
+	}
+
+	if s != want {
+		t.Errorf("Stack Reverse() failed.")
+	}
+
+	want = "1234"
+	s = ""
+	for !res.IsEmpty() {
+		s += fmt.Sprint(res.Pop().(string))
+	}
+
+	if s != want {
+		t.Errorf("Stack Reverse() failed.")
+	}
 }
